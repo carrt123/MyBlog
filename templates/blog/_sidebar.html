@@ -1,0 +1,30 @@
+<!--边栏局部模板-->
+{%  if categories %}
+<div class="card mb-3">
+  <div class="card-header">分类</div>
+  <ul class="list-group list-group-flush">
+      {% for category in categories %}
+      <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" >
+     <!--    这段代码创建了一个包含以下类的列表项：list-group-item list-group-item-action d-flex justify-content-between align-items-center。接下来我们逐步解释这段代码：
+
+1. list-group-item：将元素设置为列表项样式。
+2. list-group-item-action：将元素设置为可交互的列表项。
+3. d-flex：使用 Flexbox 布局将元素设置为水平方向排列。
+4. justify-content-between：在 Flexbox 布局中，将元素沿主轴两端对齐。
+5. align-items-center：在 Flexbox 布局中，将元素沿交叉轴居中对齐。-->
+        <a href="{{ url_for('blog.show_category', category_id=category.id) }}"> {{category.name}}</a>
+        <span class="badge badge-primary badge-pill"> {{category.posts|length}}</span>
+      </li>
+      {% endfor %}
+  </ul>
+</div>
+{% endif %}
+
+<!--这段代码创建了一个显示类别列表的卡片。首先检查是否有类别存在，如果有则显示类别列表。接下来通过循环遍历每个类别，并显示类别名称和该类别下的文章数量。
+逐步解释这段代码：
+1. 首先检查是否存在类别。
+2. 创建一个卡片元素，包含类别列表的标题。
+3. 使用循环遍历每个类别。
+4. 对于每个类别，显示类别名称和该类别下的文章数量。
+5. 结束循环。
+最后显示整个类别列表卡片。-->
